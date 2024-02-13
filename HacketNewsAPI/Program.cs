@@ -87,13 +87,13 @@ app.MapGet("/bestStories/{numberOfStories}", new Func<HttpContext, IMemoryCache,
 }));
 
 
-// a function setup for a fire and forget task to warm up the cache with first 20 stories
+// a function setup for a fire and forget task to warm up the cache with first 30 stories
 async void WarmUpCache()
 {
     try
     {
         HttpClient client = new HttpClient();
-        var response = await client.GetAsync("http://localhost:5692/bestStories/20");
+        var response = await client.GetAsync("http://localhost:5692/bestStories/30");
         if (!response.IsSuccessStatusCode)
         {
             Console.WriteLine("Failed to warm up the cache.");
